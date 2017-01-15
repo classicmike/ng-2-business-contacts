@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
       });
   }
 
-  changeState(state, key){
+  changeState(state, key = null){
     console.log('Changing state to ' + state);
     if(key){
       console.log('Key is ' + key)
@@ -50,6 +50,51 @@ export class AppComponent implements OnInit {
       .subscribe(businesses => {
         this.businesses = businesses;
       })
+  }
+
+  addBusiness(
+    company: string,
+    category: string,
+    years_in_business: string,
+    description: string,
+    phone: string,
+    email: string,
+    street_address: string,
+    city: string,
+    state: string,
+    zipcode: string
+  ) {
+
+    console.log('Should be submitting');
+
+
+    var created_at = new Date().toString();
+
+    var newBusiness = {
+      company: company,
+      category: category,
+      years_in_business: years_in_business,
+      description: description,
+      phone: phone,
+      email: email,
+      street_address: street_address,
+      city: city,
+      state: state,
+      zipcode: zipcode
+    };
+
+    console.log('Get the new business');
+    console.log(newBusiness);
+    
+    
+    this._firebaseService.addBusiness(newBusiness);
+
+    this.changeState('default');
+
+
+
+
+
   }
 
 
