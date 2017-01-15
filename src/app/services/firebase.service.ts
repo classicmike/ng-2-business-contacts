@@ -44,4 +44,12 @@ export class FirebaseService {
     addBusiness(newBusiness){
         return this.businesses.push(newBusiness);
     }
+
+    updateBusiness(key, updBusiness){
+        return this.businesses.update(key, updBusiness);
+    }
+
+    deleteBusiness(key){
+        return this.businesses.remove(key);
+    }
 }
